@@ -55,6 +55,15 @@ const teamList: TeamProps[] = [
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
     ],
   },
+    {
+    imageUrl: nouha,
+    name: "Nouhaila Lachgar",
+    position: "Media Head",
+    socialNetworks: [
+      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+    ],
+  },
   {
     imageUrl: image,
     name: "Sponsoring Head",
@@ -73,15 +82,7 @@ const teamList: TeamProps[] = [
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
     ],
   },
-  {
-    imageUrl: nouha,
-    name: "Nouhaila Lachgar",
-    position: "Media Head",
-    socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
-    ],
-  },
+
   {
     imageUrl: salim,
     name: "Salim El mardi",
