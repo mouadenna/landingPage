@@ -10,8 +10,8 @@ import { ClubFeatures } from "./components/ClubFeatures";
 import { ExecutiveBoard } from "./components/Team";
 import { EventGallery } from "./components/Testimonials";
 import { ContactUs } from "./components/ContactUs";
+import { SchoolInfo } from "./components/SchoolInfo";
 import { ScrollAnimation } from "./components/ScrollAnimation";
-import { SchoolInfo } from "./components/SchoolInfo"; // Add this line
 import { Analytics } from "@vercel/analytics/react"
 import "./App.css";
 
@@ -23,6 +23,9 @@ function App() {
   return (
     <>
       <Navbar />
+      <div className="md:hidden">
+        <div className="mb-40"></div>
+      </div>
       <Hero />
       <ScrollAnimation>
         <About />

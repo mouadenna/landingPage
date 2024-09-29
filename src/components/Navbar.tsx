@@ -13,8 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
-import { Menu, Instagram, Facebook, Youtube } from "lucide-react";
-//import { ModeToggle } from "./mode-toggle";
+import { Menu, Instagram, Facebook, Youtube, Linkedin } from "lucide-react";
 import logo from "@/assets/icon.png";
 
 interface RouteProps {
@@ -29,7 +28,7 @@ const routeList: RouteProps[] = [
   },
   {
     href: "#event-gallery",
-    label: "Events",
+    label: "Activities",
   },
 
   {
@@ -43,6 +42,7 @@ const routeList: RouteProps[] = [
 ];
 
 const socialLinks = [
+  { icon: Linkedin, href: "https://linkedin.com/company/codesi18", label: "LinkedIn" },
   { icon: Instagram, href: "https://instagram.com/code.esi", label: "Instagram" },
   { icon: Facebook, href: "https://facebook.com/codesi.club", label: "Facebook" },
   { icon: Youtube, href: "https://www.youtube.com/channel/UCStGpNYpG_2ROS6E6T-mvPg", label: "YouTube" },
@@ -118,9 +118,8 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 href={route.href}
                 key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })} text-black dark:text-white`}
+                className={`p-2 hover:bg-white hover:bg-opacity-10 ${buttonVariants({ variant: "ghost" })}
+                `}
               >
                 {route.label}
               </a>
@@ -134,7 +133,7 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 href={href}
                 target="_blank"
-                className={`p-2 ${buttonVariants({ variant: "ghost" })}`}
+                className={`p-2 hover:bg-white hover:bg-opacity-10 ${buttonVariants({ variant: "ghost" })}`}
                 aria-label={label}
               >
                 <Icon className="w-5 h-5" />

@@ -9,6 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Instagram, Linkedin } from "lucide-react";
 import image from '@/assets/member.png';
+import mouad from '@/assets/board/mouad.png';
+import salim from '@/assets/board/salim.jpg';
+import reda from '@/assets/board/reda.jpg';
+import noura from '@/assets/board/noura.jpg';
+import nouha from '@/assets/board/nouha.jpg';
 
 interface TeamProps {
   imageUrl: string;
@@ -24,8 +29,8 @@ interface SocialNetworksProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: image,
-    name: "President",
+    imageUrl: noura,
+    name: "Noura ED DAHBY",
     position: "President",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
@@ -34,7 +39,7 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Vice President",
+    name: "Omar Selouani",
     position: "Vice President",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
@@ -43,7 +48,7 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "General Secretary",
+    name: "Ikram Mesbah",
     position: "General Secretary",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
@@ -52,8 +57,8 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Data & AI Head",
-    position: "Data & AI Head",
+    name: "Sponsoring Head",
+    position: "Sponsoring Head",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
@@ -61,7 +66,25 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Data & AI Co-Head",
+    name: "Sponsoring Co-Head",
+    position: "Sponsoring Co-Head",
+    socialNetworks: [
+      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+    ],
+  },
+  {
+    imageUrl: nouha,
+    name: "Nouhaila Lachgar",
+    position: "Media Head",
+    socialNetworks: [
+      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+    ],
+  },
+  {
+    imageUrl: salim,
+    name: "Salim El mardi",
     position: "Data & AI Co-Head",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
@@ -69,9 +92,19 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: image,
-    name: "Cyber Security Head",
-    position: "Cyber Security Head",
+    imageUrl: mouad,
+    name: "Mouad En nasiry",
+    position: "Data & AI Head",
+    socialNetworks: [
+      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+    ],
+  },
+
+  {
+    imageUrl: reda,
+    name: "Reda El kate",
+    position: "Data & AI Co-Head",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
@@ -88,8 +121,8 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Media Manager",
-    position: "Media Manager",
+    name: "Competitive Programming Co-Head",
+    position: "Competitive Programming Co-Head",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
@@ -97,14 +130,24 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Sponsoring Head",
-    position: "Sponsoring Head",
+    name: "Cyber Security Head",
+    position: "Cyber Security Head",
+    socialNetworks: [
+      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+    ],
+  },
+  {
+    imageUrl: image,
+    name: "Cyber Security Co-Head",
+    position: "Cyber Security Co-Head",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
     ],
   },
 ];
+
 
 export const ExecutiveBoard = () => {
   const socialIcon = (iconName: string) => {
@@ -131,8 +174,99 @@ export const ExecutiveBoard = () => {
         Meet the dedicated team leading CODE Club at ESI, driving innovation and excellence in technology.
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10">
-        {teamList.map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+      {/* Pyramid structure: President (1) */}
+      <div className="grid grid-cols-1 gap-8 justify-items-center mb-10">
+        {teamList.slice(0, 1).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          <Card
+            key={name}
+            className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
+          >
+            <CardHeader className="mt-8 flex justify-center items-center pb-2">
+              <img
+                src={imageUrl}
+                alt={`${name} ${position}`}
+                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
+              />
+              <CardTitle className="text-center">{name}</CardTitle>
+              <CardDescription className="text-primary">
+                {position}
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="text-center pb-2">
+              <p>Dedicated to advancing technology and fostering innovation at ESI.</p>
+            </CardContent>
+
+            <CardFooter>
+              {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
+                <div key={name}>
+                  <a
+                    rel="noreferrer noopener"
+                    href={url}
+                    target="_blank"
+                    className={buttonVariants({
+                      variant: "ghost",
+                      size: "sm",
+                    })}
+                  >
+                    <span className="sr-only">{name} icon</span>
+                    {socialIcon(name)}
+                  </a>
+                </div>
+              ))}
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {/* Vice President and General Secretary (2) */}
+      <div className="grid grid-cols-2 gap-8 justify-items-center mb-10">
+        {teamList.slice(1, 3).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+          <Card
+            key={name}
+            className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
+          >
+            <CardHeader className="mt-8 flex justify-center items-center pb-2">
+              <img
+                src={imageUrl}
+                alt={`${name} ${position}`}
+                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
+              />
+              <CardTitle className="text-center">{name}</CardTitle>
+              <CardDescription className="text-primary">
+                {position}
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="text-center pb-2">
+              <p>Dedicated to advancing technology and fostering innovation at ESI.</p>
+            </CardContent>
+
+            <CardFooter>
+              {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
+                <div key={name}>
+                  <a
+                    rel="noreferrer noopener"
+                    href={url}
+                    target="_blank"
+                    className={buttonVariants({
+                      variant: "ghost",
+                      size: "sm",
+                    })}
+                  >
+                    <span className="sr-only">{name} icon</span>
+                    {socialIcon(name)}
+                  </a>
+                </div>
+              ))}
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {/* Remaining team (3 in each row) */}
+      <div className="grid md:grid-cols-3 gap-8 justify-items-center">
+        {teamList.slice(3).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
           <Card
             key={name}
             className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"

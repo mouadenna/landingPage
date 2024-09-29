@@ -1,4 +1,3 @@
-
 import logoSvg from '@/assets/logo.svg';
 
 export const Footer = () => {
@@ -16,16 +15,7 @@ export const Footer = () => {
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Follow Us</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="https://github.com/code-esi"
-              target="_blank"
-              className="opacity-60 hover:opacity-100"
-            >
-              Github
-            </a>
-          </div>
+
           <div>
             <a
               rel="noreferrer noopener"
@@ -46,6 +36,26 @@ export const Footer = () => {
               Instagram
             </a>
           </div>
+          <div>
+            <a
+              rel="noreferrer noopener"
+              href="https://www.facebook.com/codesi.club"
+              target="_blank"
+              className="opacity-60 hover:opacity-100"
+            >
+              Facebook
+            </a>
+          </div>
+          <div>
+            <a
+              rel="noreferrer noopener"
+              href="https://www.youtube.com/channel/UCStGpNYpG_2ROS6E6T-mvPg"
+              target="_blank"
+              className="opacity-60 hover:opacity-100"
+            >
+              YouTube
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -57,6 +67,15 @@ export const Footer = () => {
               className="opacity-60 hover:opacity-100"
             >
               Our Mission
+            </a>
+          </div>
+          <div>
+          <a
+              rel="noreferrer noopener"
+              href="#testimonials"
+              className="opacity-60 hover:opacity-100"
+            >
+              Our Activities
             </a>
           </div>
           <div>
@@ -77,35 +96,21 @@ export const Footer = () => {
               Contact Us
             </a>
           </div>
+
         </div>
 
+
+
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Activities</h3>
+          <h3 className="font-bold text-lg">School Website</h3>
           <div>
             <a
               rel="noreferrer noopener"
-              href="#workshops"
+              href="http://esi.ac.ma"
+              target="_blank"
               className="opacity-60 hover:opacity-100"
             >
-              Workshops
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#projects"
-              className="opacity-60 hover:opacity-100"
-            >
-              Projects
-            </a>
-          </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#testimonials"
-              className="opacity-60 hover:opacity-100"
-            >
-              Events
+              ESI Website
             </a>
           </div>
         </div>

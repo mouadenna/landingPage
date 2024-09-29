@@ -1,8 +1,11 @@
 import codeEsiLogoGif from '../assets/anim-logo.mp4';
+import { useMediaQuery } from 'react-responsive';
 
 export const Hero = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
-    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10 relative -mt-16 pt-24">
+    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10 relative -mt-12 pt-24">
       {/* Left side: Text Content */}
       <div className="text-center lg:text-start space-y-6 relative z-10">
         <main className="text-5xl md:text-6xl font-bold">
@@ -30,19 +33,9 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Right side: Uncropped, Resizable Video */}
-      <div className="relative w-full flex justify-end items-start">
-        <div className="h-60 sm:h-72 md:h-[20rem] lg:h-[32rem] w-full max-w-xl -mt-20"> 
-          <video
-            src={codeEsiLogoGif}
-            autoPlay
-            loop
-            muted
-          />
-        </div>
-      </div>
 
-      {/* Neon effect animations */}
+      <div className="shadow"></div>
+      {/* Styles including new fade effect */}
       <style>{`
         @keyframes balanced-neon-blue {
           0%, 100% {
@@ -84,6 +77,18 @@ export const Hero = () => {
 
         .animate-balanced-neon-cyan {
           animation: balanced-neon-cyan 2s ease-in-out infinite alternate;
+        }
+
+        .video-fade-mask {
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          mask-size: 100% 100%;
+          mask-repeat: no-repeat;
+          mask-position: center;
+        }
+        .video-fade-mask2 {
+          mask-image: linear-gradient(to buttom, transparent, black 10%, black 90%, transparent);
+          mask-size: 100% 100%;
+          mask-repeat: no-repeat;
         }
       `}</style>
     </section>

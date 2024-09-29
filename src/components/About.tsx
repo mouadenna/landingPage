@@ -11,7 +11,7 @@ export const About = () => {
           <img
             src={logo}
             alt="CODE Club Logo"
-            className="w-[300px] object-contain rounded-lg"
+            className="w-[300px] object-contain rounded-lg mx-auto"
           />
           <div className="flex flex-col justify-between">
             <div className="pb-6">
