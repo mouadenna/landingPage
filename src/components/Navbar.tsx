@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
-import { Menu, Instagram, Facebook, Youtube, Linkedin } from "lucide-react";
+import { Menu, Instagram, Youtube, Linkedin } from "lucide-react";
 import logo from "@/assets/icon.png";
 
 interface RouteProps {
@@ -44,7 +44,6 @@ const routeList: RouteProps[] = [
 const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/company/codesi18", label: "LinkedIn" },
   { icon: Instagram, href: "https://instagram.com/code.esi", label: "Instagram" },
-  { icon: Facebook, href: "https://facebook.com/codesi.club", label: "Facebook" },
   { icon: Youtube, href: "https://www.youtube.com/channel/UCStGpNYpG_2ROS6E6T-mvPg", label: "YouTube" },
   { icon: GitHubLogoIcon, href: "https://github.com/CODE-ESI-CLUB", label: "GitHub" },
 ];
