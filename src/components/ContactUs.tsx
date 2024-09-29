@@ -73,7 +73,7 @@ export const ContactUs = () => {
         <div>
           <h3 className="text-lg font-semibold">Phone</h3>
           <a href="tel:+212659373635" className="text-primary hover:underline">
-            +212 6 59 37 36 35
+            +212 6 81 86 55 40
           </a>
         </div>
       </div>
