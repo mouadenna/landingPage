@@ -9,7 +9,7 @@ git clone https://github.com/CODE-ESI-CLUB/mouad-s-landing-page-version.git
 2. Go into project
 
 ```bash
-cd shadcn-landing-page
+cd landingPage
 ```
 
 3. Install dependencies
