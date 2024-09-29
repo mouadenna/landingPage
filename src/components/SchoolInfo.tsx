@@ -35,7 +35,7 @@ export const SchoolInfo = () => {
                 School's Mission
               </h3>
               <p className="text-muted-foreground">
-                Our mission is to train high-level engineers capable of meeting the technological challenges of the 21st century. We strive to cultivate innovation, creativity, and critical thinking in our students, while equipping them with the technical and managerial skills necessary to excel in their careers.
+                School's Mission is to train high-level engineers capable of meeting the technological challenges of the 21st century. We strive to cultivate innovation, creativity, and critical thinking in our students, while equipping them with the technical and managerial skills necessary to excel in their careers.
               </p>
 
             </div>
