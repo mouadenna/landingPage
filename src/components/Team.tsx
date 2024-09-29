@@ -121,15 +121,6 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: image,
-    name: "Competitive Programming Co-Head",
-    position: "Competitive Programming Co-Head",
-    socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
-    ],
-  },
-  {
-    imageUrl: image,
     name: "Cyber Security Head",
     position: "Cyber Security Head",
     socialNetworks: [
