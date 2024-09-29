@@ -63,7 +63,7 @@ export const Footer = () => {
           <div>
           <a
               rel="noreferrer noopener"
-              href="#testimonials"
+              href="#event-gallery"
               className="opacity-60 hover:opacity-100"
             >
               Our Activities
