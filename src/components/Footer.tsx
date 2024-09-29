@@ -36,16 +36,7 @@ export const Footer = () => {
               Instagram
             </a>
           </div>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="https://www.facebook.com/codesi.club"
-              target="_blank"
-              className="opacity-60 hover:opacity-100"
-            >
-              Facebook
-            </a>
-          </div>
+
           <div>
             <a
               rel="noreferrer noopener"
