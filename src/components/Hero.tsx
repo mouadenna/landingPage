@@ -1,8 +1,6 @@
-import codeEsiLogoGif from '../assets/anim-logo.mp4';
 import { useMediaQuery } from 'react-responsive';
 
 export const Hero = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10 relative -mt-12 pt-24">
