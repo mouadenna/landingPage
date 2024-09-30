@@ -14,6 +14,14 @@ import salim from '@/assets/board/salim.jpg';
 import reda from '@/assets/board/reda.jpg';
 import noura from '@/assets/board/noura.jpg';
 import nouha from '@/assets/board/nouha.jpg';
+import ashraf from '@/assets/board/ashraf.jpeg'
+import manal from '@/assets/board/manal.jpeg'
+import hiba from '@/assets/board/hiba.jpeg'
+import ikram from '@/assets/board/ikram.jpeg'
+import salma from '@/assets/board/salma.jpeg'
+import wafae from '@/assets/board/wafae.jpeg'
+
+
 
 interface TeamProps {
   imageUrl: string;
@@ -33,8 +41,8 @@ const teamList: TeamProps[] = [
     name: "Noura ED DAHBY",
     position: "President",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/noura-ed-dahby-47998b222" },
+      { name: "Instagram", url: "https://www.instagram.com/norah.trz/" },
     ],
   },
   {
@@ -42,17 +50,17 @@ const teamList: TeamProps[] = [
     name: "Omar Selouani",
     position: "Vice President",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/omar-salouani/" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
     ],
   },
   {
-    imageUrl: image,
+    imageUrl: ikram,
     name: "Ikram Mesbah",
     position: "General Secretary",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/ikram-mesbah-b904232b4/" },
+      { name: "Instagram", url: "https://www.instagram.com/ik_kiba/" },
     ],
   },
     {
@@ -60,26 +68,26 @@ const teamList: TeamProps[] = [
     name: "Nouhaila Lachgar",
     position: "Media Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/nouhaila-lachgar-b92475284/" },
+      { name: "Instagram", url: "https://www.instagram.com/nouha.ie" },
     ],
   },
   {
-    imageUrl: image,
-    name: "Sponsoring Head",
+    imageUrl: hiba,
+    name: "Hiba Alami Chentoufi",
     position: "Sponsoring Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/hiba-alami-chentoufi-386b2929a" },
+      { name: "Instagram", url: "https://www.instagram.com/hiiba.ac1" },
     ],
   },
   {
-    imageUrl: image,
-    name: "Sponsoring Co-Head",
+    imageUrl: manal,
+    name: "Manal Maati",
     position: "Sponsoring Co-Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/manal-mt-7255ab296" },
+      { name: "Instagram", url: "https://www.instagram.com/ae.maanalle/" },
     ],
   },
 
@@ -88,8 +96,8 @@ const teamList: TeamProps[] = [
     name: "Salim El mardi",
     position: "Data & AI Co-Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/elmardisalim/" },
+      { name: "Instagram", url: "https://www.instagram.com/salim.elmardi/" },
     ],
   },
   {
@@ -97,8 +105,8 @@ const teamList: TeamProps[] = [
     name: "Mouad En nasiry",
     position: "Data & AI Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/mouad-ennasiry/" },
+      { name: "Instagram", url: "https://www.instagram.com/mouadenna/" },
     ],
   },
 
@@ -107,35 +115,34 @@ const teamList: TeamProps[] = [
     name: "Reda El kate",
     position: "Data & AI Co-Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/reda-el-kate-b6360628b/" },
+      { name: "Instagram", url: "https://www.instagram.com/reda.elkate/" },
     ],
   },
   {
-    imageUrl: image,
-    name: "Competitive Programming Head",
+    imageUrl: wafae,
+    name: "Wafae Boumajjane",
     position: "Competitive Programming Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/wafae-boumajjane-4a8234287" },
     ],
   },
   {
-    imageUrl: image,
-    name: "Cyber Security Head",
+    imageUrl: ashraf,
+    name: "Ashraf Abiba",
     position: "Cyber Security Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/ashraf-abiba-836820207/" },
+      { name: "Instagram", url: "https://www.instagram.com/pitcho_lana/" },
     ],
   },
   {
-    imageUrl: image,
-    name: "Cyber Security Co-Head",
+    imageUrl: salma,
+    name: "Salma Hermak",
     position: "Cyber Security Co-Head",
     socialNetworks: [
-      { name: "Linkedin", url: "https://www.linkedin.com/company/code-esi" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
+      { name: "Linkedin", url: "https://www.linkedin.com/in/salma-hermak-127878249/" },
+      { name: "Instagram", url: "https://www.instagram.com/hermaksalma" },
     ],
   },
 ];
