@@ -1,3 +1,4 @@
+import React from 'react';
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -21,12 +22,11 @@ import ikram from '@/assets/board/ikram.jpeg'
 import salma from '@/assets/board/salma.jpeg'
 import wafae from '@/assets/board/wafae.jpeg'
 
-
-
 interface TeamProps {
   imageUrl: string;
   name: string;
   position: string;
+  description: string;
   socialNetworks: SocialNetworksProps[];
 }
 
@@ -169,19 +169,6 @@ export const ExecutiveBoard = () => {
     }
   };
 
-
-export const ExecutiveBoard = () => {
-  const socialIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Linkedin":
-        return <Linkedin size="20" />;
-      case "Instagram":
-        return <Instagram size="20" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <section id="team" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold">
@@ -197,7 +184,7 @@ export const ExecutiveBoard = () => {
 
       {/* Pyramid structure: President (1) */}
       <div className="grid grid-cols-1 gap-8 justify-items-center mb-10">
-        {teamList.slice(0, 1).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+        {teamList.slice(0, 1).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
           <Card
             key={name}
             className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
@@ -215,7 +202,7 @@ export const ExecutiveBoard = () => {
             </CardHeader>
 
             <CardContent className="text-center pb-2">
-              <p>Dedicated to advancing technology and fostering innovation at ESI.</p>
+              <p>{description}</p>
             </CardContent>
 
             <CardFooter>
@@ -242,7 +229,7 @@ export const ExecutiveBoard = () => {
 
       {/* Vice President and General Secretary (2) */}
       <div className="grid grid-cols-2 gap-8 justify-items-center mb-10">
-        {teamList.slice(1, 3).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+        {teamList.slice(1, 3).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
           <Card
             key={name}
             className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
@@ -260,7 +247,7 @@ export const ExecutiveBoard = () => {
             </CardHeader>
 
             <CardContent className="text-center pb-2">
-              <p>Dedicated to advancing technology and fostering innovation at ESI.</p>
+              <p>{description}</p>
             </CardContent>
 
             <CardFooter>
@@ -287,7 +274,7 @@ export const ExecutiveBoard = () => {
 
       {/* Remaining team (3 in each row) */}
       <div className="grid md:grid-cols-3 gap-8 justify-items-center">
-        {teamList.slice(3).map(({ imageUrl, name, position, socialNetworks }: TeamProps) => (
+        {teamList.slice(3).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
           <Card
             key={name}
             className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
@@ -305,7 +292,7 @@ export const ExecutiveBoard = () => {
             </CardHeader>
 
             <CardContent className="text-center pb-2">
-              <p>Dedicated to advancing technology and fostering innovation at ESI.</p>
+              <p>{description}</p>
             </CardContent>
 
             <CardFooter>
