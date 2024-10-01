@@ -40,6 +40,7 @@ const teamList: TeamProps[] = [
     imageUrl: noura,
     name: "Noura ED DAHBY",
     position: "President",
+    description: "Leading the club's vision and overall strategy.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/noura-ed-dahby-47998b222" },
       { name: "Instagram", url: "https://www.instagram.com/norah.trz/" },
@@ -49,6 +50,7 @@ const teamList: TeamProps[] = [
     imageUrl: image,
     name: "Omar Selouani",
     position: "Vice President",
+    description: "Supporting the president and overseeing club operations.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/omar-salouani/" },
       { name: "Instagram", url: "https://www.instagram.com/code.esi" },
@@ -58,15 +60,17 @@ const teamList: TeamProps[] = [
     imageUrl: ikram,
     name: "Ikram Mesbah",
     position: "General Secretary",
+    description: "Managing administrative tasks and internal communication.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/ikram-mesbah-b904232b4/" },
       { name: "Instagram", url: "https://www.instagram.com/ik_kiba/" },
     ],
   },
-    {
+  {
     imageUrl: nouha,
     name: "Nouhaila Lachgar",
     position: "Media Head",
+    description: "Crafting and executing the club's media and outreach strategies.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/nouhaila-lachgar-b92475284/" },
       { name: "Instagram", url: "https://www.instagram.com/nouha.ie" },
@@ -76,6 +80,7 @@ const teamList: TeamProps[] = [
     imageUrl: hiba,
     name: "Hiba Alami Chentoufi",
     position: "Sponsoring Head",
+    description: "Leading sponsorship initiatives and organizing training sessions.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/hiba-alami-chentoufi-386b2929a" },
       { name: "Instagram", url: "https://www.instagram.com/hiiba.ac1" },
@@ -85,16 +90,17 @@ const teamList: TeamProps[] = [
     imageUrl: manal,
     name: "Manal Maati",
     position: "Sponsoring Co-Head",
+    description: "Assisting in sponsorship efforts and coordinating training sessions.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/manal-mt-7255ab296" },
       { name: "Instagram", url: "https://www.instagram.com/ae.maanalle/" },
     ],
   },
-
   {
     imageUrl: salim,
     name: "Salim El mardi",
     position: "Data & AI Co-Head",
+    description: "Co-leading data science and AI initiatives, organizing related training.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/elmardisalim/" },
       { name: "Instagram", url: "https://www.instagram.com/salim.elmardi/" },
@@ -104,16 +110,17 @@ const teamList: TeamProps[] = [
     imageUrl: mouad,
     name: "Mouad En nasiry",
     position: "Data & AI Head",
+    description: "Spearheading data science and AI projects, conducting training workshops.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/mouad-ennasiry/" },
       { name: "Instagram", url: "https://www.instagram.com/mouadenna/" },
     ],
   },
-
   {
     imageUrl: reda,
     name: "Reda El kate",
     position: "Data & AI Co-Head",
+    description: "Supporting data science and AI initiatives, facilitating training sessions.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/reda-el-kate-b6360628b/" },
       { name: "Instagram", url: "https://www.instagram.com/reda.elkate/" },
@@ -123,6 +130,7 @@ const teamList: TeamProps[] = [
     imageUrl: wafae,
     name: "Wafae Boumajjane",
     position: "Competitive Programming Head",
+    description: "Organizing coding competitions and leading training sessions.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/wafae-boumajjane-4a8234287" },
     ],
@@ -131,6 +139,7 @@ const teamList: TeamProps[] = [
     imageUrl: ashraf,
     name: "Ashraf Abiba",
     position: "Cyber Security Head",
+    description: "Leading cybersecurity initiatives and conducting training programs.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/ashraf-abiba-836820207/" },
       { name: "Instagram", url: "https://www.instagram.com/pitcho_lana/" },
@@ -140,12 +149,25 @@ const teamList: TeamProps[] = [
     imageUrl: salma,
     name: "Salma Hermak",
     position: "Cyber Security Co-Head",
+    description: "Supporting cybersecurity projects and assisting with training efforts.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/salma-hermak-127878249/" },
       { name: "Instagram", url: "https://www.instagram.com/hermaksalma" },
     ],
   },
 ];
+
+export const ExecutiveBoard = () => {
+  const socialIcon = (iconName: string) => {
+    switch (iconName) {
+      case "Linkedin":
+        return <Linkedin size="20" />;
+      case "Instagram":
+        return <Instagram size="20" />;
+      default:
+        return null;
+    }
+  };
 
 
 export const ExecutiveBoard = () => {
