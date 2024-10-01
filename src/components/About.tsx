@@ -25,6 +25,7 @@ export const About = () => {
             
               <p className="text-xl text-muted-foreground mt-4">
                 Club Of Data Engineers, or CODE, is THE IT club at the School of Information Sciences (ESI) located in Rabat.
+              </p>
               <p className="text-xl text-muted-foreground mt-4">
               The main mission of the CODE club is to create a better atmosphere at the school, allowing students to exchange ideas,
                 build connections in the professional world, and organize events and training sessions to share their expertise.
