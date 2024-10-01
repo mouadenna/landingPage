@@ -24,15 +24,10 @@ export const About = () => {
               </h2>
             
               <p className="text-xl text-muted-foreground mt-4">
-                CODE Club at ESI is a dynamic community of passionate tech enthusiasts. 
-                We focus on three key areas: Cybersecurity, Data & AI, and Competitive Programming. 
-                Our mission is to empower students with cutting-edge skills, foster collaboration, 
-                and prepare the next generation of tech leaders.
-              </p>
+                Club Of Data Engineers, or CODE, is THE IT club at the School of Information Sciences (ESI) located in Rabat.
               <p className="text-xl text-muted-foreground mt-4">
-                Through workshops, projects, and competitions, we provide hands-on experience 
-                in the latest technologies and methodologies. Join us to expand your knowledge, 
-                build your network, and kickstart your career in the ever-evolving world of technology.
+              The main mission of the CODE club is to create a better atmosphere at the school, allowing students to exchange ideas,
+                build connections in the professional world, and organize events and training sessions to share their expertise.
               </p>
             </div>
           </div>
