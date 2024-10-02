@@ -19,9 +19,8 @@ export const Hero = () => {
         </main>
 
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Join our vibrant community of tech lovers, where data enthusiasts, cybersecurity aficionados, competitive programmers, and AI innovators come together. 
-          At CODE, we dive into the latest trends in data science, explore the world of cybersecurity, and challenge our skills with competitive programming. 
-          Whether you're looking to build, learn, or compete, we’ve got something for every tech passion. Come be part of the future of tech with us!
+          Join our community of data enthusiasts and developers. Learn, build,
+          and innovate with cutting-edge technologies in data engineering and software development.
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
