@@ -1,5 +1,5 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2Icon, UsersIcon, TrophyIcon } from "lucide-react";
+import { Code2Icon, UsersIcon, TrophyIcon, BriefcaseIcon } from "lucide-react"; // Add new icon
 import iconSrc from '@/assets/icon.png'; 
 
 interface FeatureProps {
@@ -27,29 +27,31 @@ const featureList: FeatureProps[] = [
       "Represent ESI in national and international coding competitions, cybersecurity challenges, and data science hackathons.",
     icon: <TrophyIcon className="w-6 h-6 text-primary" />,
   },
+  {
+    title: "Seminars & Mentoring",
+    description:
+      "Learn from seminars led by industry experts and receive mentorship from leading professionals in the tech field.",
+    icon: <BriefcaseIcon className="w-6 h-6 text-primary" />, // New icon for this feature
+  },
 ];
 
 export const ClubFeatures = () => {
   return (
-    <section className="container py-24 sm:py-32 " >
+    <section className="container py-24 sm:py-32">
       <div className="flex flex-col items-center justify-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Empowering{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Activities{" "}
-        </span>
-      </h2>
-      <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Join CODE club to enhance your skills, collaborate with peers, and prepare for a successful career in tech.
-          </p>
-
+        <h2 className="text-3xl md:text-4xl font-bold text-center">
+          Empowering{" "}
+          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+            Activities{" "}
+          </span>
+        </h2>
+        <p className="text-muted-foreground text-xl mt-4 mb-8">
+          Join CODE club to enhance your skills, collaborate with peers, and prepare for a successful career in tech.
+        </p>
       </div>
 
-          
       <div className="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
         <div>
-        
-
           <div className="flex flex-col gap-8">
             {featureList.map(({ icon, title, description }: FeatureProps) => (
               <Card key={title}>
