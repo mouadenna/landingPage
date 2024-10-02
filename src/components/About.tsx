@@ -29,7 +29,7 @@ export const About = () => {
                 learn from one another, and grow both personally and professionally. 
                               </p>
               <p className="text-xl text-muted-foreground mt-4">
-              Our mission? To create an atmosphere that encourages creativity and connection—whether it’s through exciting events, hands-on workshops,
+              Our mission is to create an atmosphere that encourages creativity and connection—whether it’s through exciting events, hands-on workshops,
                 or networking with industry professionals. At CODE, we’re shaping the future, one project at a time!
               </p>
             </div>
