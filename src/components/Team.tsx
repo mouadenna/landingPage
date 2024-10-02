@@ -20,6 +20,7 @@ import hiba from '@/assets/board/hiba.jpeg'
 import ikram from '@/assets/board/ikram.jpeg'
 import salma from '@/assets/board/salma.jpeg'
 import wafae from '@/assets/board/wafae.jpeg'
+import omar from '@/assets/board/omar.jpeg'
 
 interface TeamProps {
   imageUrl: string;
@@ -46,13 +47,12 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: image,
+    imageUrl: omar,
     name: "Omar Selouani",
     position: "Vice President",
     description: "Supporting the president and overseeing club operations.",
     socialNetworks: [
       { name: "Linkedin", url: "https://www.linkedin.com/in/omar-salouani/" },
-      { name: "Instagram", url: "https://www.instagram.com/code.esi" },
     ],
   },
   {
