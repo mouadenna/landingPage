@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Instagram, Linkedin } from "lucide-react";
-import image from '@/assets/member.png';
 import mouad from '@/assets/board/mouad.png';
 import salim from '@/assets/board/salim.jpg';
 import reda from '@/assets/board/reda.jpg';
