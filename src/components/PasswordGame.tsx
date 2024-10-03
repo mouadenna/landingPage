@@ -43,7 +43,7 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_DURATION = 10800; // 3 hours in seconds
+const GAME_DURATION = 12300; // 3 hours in seconds
 const MAX_TRIES = 100;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
