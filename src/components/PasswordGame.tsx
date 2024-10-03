@@ -43,12 +43,12 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_DURATION = 60; // 1 hour in seconds
+const GAME_DURATION = 900; // 1 hour in seconds
 const MAX_TRIES = 3;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 // New constants for game scheduling
-const GAME_START_TIME = new Date('2024-10-03T11:34:00').getTime(); // Set your desired start time
+const GAME_START_TIME = new Date('2024-10-03T13:00:00').getTime(); // Set your desired start time
 const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
