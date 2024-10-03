@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, query, orderByChild, limitToLast, get, set } from "firebase/database";
 
-// Firebase configuration
+// Firebase configuration remains the same
 const firebaseConfig = {
   apiKey: "AIzaSyDQCAsgIwi8m_soYbnBN5XVUcs1qNT_5Io",
   authDomain: "passwordgame1.firebaseapp.com",
@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Types
+// Types remain the same
 type Rule = {
   id: number;
   text: string;
@@ -43,10 +43,13 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_TIME = 3600; // 1 hour in seconds
+const GAME_DURATION = 60; // 1 hour in seconds
 const MAX_TRIES = 3;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
+// New constants for game scheduling
+const GAME_START_TIME = new Date('2024-10-03T11:34:00').getTime(); // Set your desired start time
+const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
 const rules: Rule[] = [
@@ -115,18 +118,33 @@ function DifficultyIndicator({ difficulty }: { difficulty: number }) {
 
 
 // Utility functions
-// Utility functions
-const formatTime = (seconds: number) => {
+const formatTime = (milliseconds: number) => {
+  const seconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(seconds / 3600);
   const mins = Math.floor((seconds % 3600) / 60);
   const secs = seconds % 60;
   return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 };
 
+const getTimeLeft = () => {
+  const now = Date.now();
+  if (now < GAME_START_TIME) {
+    return GAME_START_TIME - now;
+  } else if (now < GAME_END_TIME) {
+    return GAME_END_TIME - now;
+  } else {
+    return 0;
+  }
+};
+
+const isGameActive = () => {
+  const now = Date.now();
+  return now >= GAME_START_TIME && now < GAME_END_TIME;
+};
 // Main Component
 export default function PasswordGame() {
   const [password, setPassword] = useState('');
-  const [timeLeft, setTimeLeft] = useState(GAME_TIME);
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [playerName, setPlayerName] = useState('');
@@ -135,6 +153,21 @@ export default function PasswordGame() {
   const [showRegistration, setShowRegistration] = useState(true);
   const [showTutorial, setShowTutorial] = useState(true);
   const [playerData, setPlayerData] = useState<PlayerData | null>(null);
+
+  // Updated game timer effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const remaining = getTimeLeft();
+      setTimeLeft(remaining);
+      
+      if (remaining <= 0 && gameStarted) {
+        setGameOver(true);
+        setGameStarted(false);
+      }
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  }, [gameStarted]);
 
   // Firebase Leaderboard Effect
   useEffect(() => {
@@ -150,7 +183,7 @@ export default function PasswordGame() {
     });
   }, []);
 
-  // Load player data
+  // Load player data effect
   useEffect(() => {
     const loadPlayerData = async () => {
       if (phoneNumber) {
@@ -161,7 +194,6 @@ export default function PasswordGame() {
           const data = snapshot.val() as PlayerData;
           const now = Date.now();
           
-          // Reset tries if 24 hours have passed
           if (data.lastAttemptTime && now - data.lastAttemptTime > TRIES_RESET_TIME) {
             data.triesLeft = MAX_TRIES;
           }
@@ -175,25 +207,18 @@ export default function PasswordGame() {
     loadPlayerData();
   }, [phoneNumber]);
 
-  // Game Timer Effect remains the same
-  useEffect(() => {
-    let timer: ReturnType<typeof setInterval>;
-    if (gameStarted && !gameOver && timeLeft > 0) {
-      timer = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            setGameOver(true);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timer);
-  }, [gameStarted, gameOver, timeLeft]);
-
   // Handle game start
   const handleStart = async () => {
+    if (!isGameActive()) {
+      const now = Date.now();
+      if (now < GAME_START_TIME) {
+        alert(`The game hasn't started yet. It will begin at ${new Date(GAME_START_TIME).toLocaleString()}`);
+      } else {
+        alert("The game has ended. Please wait for the next round.");
+      }
+      return;
+    }
+
     if (showRegistration && (!playerName.trim() || !phoneNumber.trim())) {
       alert("Please enter your name and phone number before starting!");
       return;
@@ -221,7 +246,6 @@ export default function PasswordGame() {
     setShowRegistration(false);
     setGameStarted(true);
     setGameOver(false);
-    setTimeLeft(GAME_TIME);
     setPassword('');
     setShowTutorial(false);
   };
@@ -236,7 +260,6 @@ export default function PasswordGame() {
 
     const cleanPhoneNumber = playerData.phoneNumber.replace(/[^\d]/g, '');
     
-    // Update player data
     const updatedPlayerData = {
       ...playerData,
       triesLeft: playerData.triesLeft - 1,
@@ -244,10 +267,7 @@ export default function PasswordGame() {
       lastAttemptTime: Date.now()
     };
 
-    // Save player data
     await set(ref(database, `players/${cleanPhoneNumber}`), updatedPlayerData);
-
-    // Update leaderboard
     await set(ref(database, `leaderboard/${cleanPhoneNumber}`), {
       phoneNumber: cleanPhoneNumber,
       name: playerData.name,
@@ -258,7 +278,6 @@ export default function PasswordGame() {
     setGameOver(true);
     setGameStarted(false);
     setPassword('');
-    setTimeLeft(GAME_TIME);
   };
 
   const score = rules
@@ -279,12 +298,24 @@ export default function PasswordGame() {
               )}
             </CardHeader>
             <CardContent>
+              {!isGameActive() && (
+                <Alert className="mb-4">
+                  <Info className="h-4 w-4" />
+                  <AlertTitle>Game Status</AlertTitle>
+                  <AlertDescription>
+                    {Date.now() < GAME_START_TIME
+                      ? `The game will start in ${formatTime(timeLeft)}`
+                      : "The game has ended. Please wait for the next round."}
+                  </AlertDescription>
+                </Alert>
+              )}
+
               {showTutorial && !gameStarted && (
                 <Alert className="mb-4">
                   <Info className="h-4 w-4" />
                   <AlertTitle>How to Play</AlertTitle>
                   <AlertDescription>
-                    Create a password that meets as many requirements as possible. You have 3 tries within an hour.
+                    Create a password that meets as many requirements as possible. You have 3 tries within the game duration.
                     Only your latest score will be saved!
                   </AlertDescription>
                 </Alert>
@@ -317,16 +348,21 @@ export default function PasswordGame() {
                 </div>
               )}
 
-              {/* Rest of the JSX remains largely the same */}
               <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
                 <div className="flex items-center gap-4 flex-wrap">
                   <div className="flex items-center">
                     <Timer className="mr-2 text-blue-500" />
-                    <span className="text-xl font-bold">{formatTime(timeLeft)}</span>
+                    <span className="text-xl font-bold">
+                      {Date.now() < GAME_START_TIME 
+                        ? `Starting in: ${formatTime(timeLeft)}`
+                        : isGameActive()
+                          ? `Time left: ${formatTime(timeLeft)}`
+                          : "Game ended"}
+                    </span>
                   </div>
                 </div>
                 <div className="text-xl font-bold">Score: {score}</div>
-                {(!playerData || playerData.triesLeft > 0) && (
+                {(!playerData || playerData.triesLeft > 0) && isGameActive() && (
                   <button 
                     onClick={gameStarted ? handleSubmit : handleStart}
                     className="px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
@@ -367,7 +403,6 @@ export default function PasswordGame() {
                 </Alert>
               )}
 
-              {/* Rules grid remains the same */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 {rules.map(rule => {
                   const passed = rule.check(password);
