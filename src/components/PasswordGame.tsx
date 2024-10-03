@@ -160,7 +160,6 @@ export default function PasswordGame() {
   const [showTutorial, setShowTutorial] = useState(true);
   const [playerData, setPlayerData] = useState<PlayerData | null>(null);
 
-  // Updated game timer effect
   useEffect(() => {
     const timer = setInterval(() => {
       const remaining = getTimeLeft();
@@ -175,7 +174,6 @@ export default function PasswordGame() {
     return () => clearInterval(timer);
   }, [gameStarted]);
 
-  // Firebase Leaderboard Effect
   useEffect(() => {
     const leaderboardRef = query(ref(database, 'leaderboard'), orderByChild('score'), limitToLast(10));
     onValue(leaderboardRef, (snapshot) => {
@@ -189,7 +187,6 @@ export default function PasswordGame() {
     });
   }, []);
 
-  // Load player data effect
   useEffect(() => {
     const loadPlayerData = async () => {
       if (phoneNumber) {
@@ -200,6 +197,7 @@ export default function PasswordGame() {
           const data = snapshot.val() as PlayerData;
           const now = Date.now();
           
+          // Reset tries if 24 hours have passed
           if (data.lastAttemptTime && now - data.lastAttemptTime > TRIES_RESET_TIME) {
             data.triesLeft = MAX_TRIES;
           }
@@ -213,18 +211,7 @@ export default function PasswordGame() {
     loadPlayerData();
   }, [phoneNumber]);
 
-  // Handle game start
   const handleStart = async () => {
-    if (!isGameActive()) {
-      const now = getMoroccanTime().getTime();
-      if (now < GAME_START_TIME) {
-        alert(`The game hasn't started yet. It will begin at ${new Date(GAME_START_TIME).toLocaleString('en-US', { timeZone: 'Africa/Casablanca' })} Moroccan time`);
-      } else {
-        alert("The game has ended. Please wait for the next round.");
-      }
-      return;
-    }
-
     if (showRegistration && (!playerName.trim() || !phoneNumber.trim())) {
       alert("Please enter your name and phone number before starting!");
       return;
@@ -256,7 +243,6 @@ export default function PasswordGame() {
     setShowTutorial(false);
   };
 
-  // Handle submit
   const handleSubmit = async () => {
     if (!playerData) return;
 
@@ -332,13 +318,13 @@ export default function PasswordGame() {
                   <div>
                     <label htmlFor="playerName" className="block mb-2 text-sm font-medium">Enter your name:</label>
                     <input
-  type="text"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-  placeholder="Enter your password..."
-  className="w-full p-3 border rounded mb-4 text-lg text-black focus:ring-2 focus:ring-blue-500 focus:outline-none"
-  disabled={!gameStarted || gameOver}
-/>
+                      id="playerName"
+                      type="text"
+                      value={playerName}
+                      onChange={(e) => setPlayerName(e.target.value)}
+                      className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
+                      placeholder="Your name"
+                    />
                   </div>
                   <div>
                     <label htmlFor="phoneNumber" className="block mb-2 text-sm font-medium">Enter your phone number:</label>
