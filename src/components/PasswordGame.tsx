@@ -332,13 +332,13 @@ export default function PasswordGame() {
                   <div>
                     <label htmlFor="playerName" className="block mb-2 text-sm font-medium">Enter your name:</label>
                     <input
-                      id="playerName"
-                      type="text"
-                      value={playerName}
-                      onChange={(e) => setPlayerName(e.target.value)}
-                      className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
-                      placeholder="Your name"
-                    />
+  type="text"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  placeholder="Enter your password..."
+  className="w-full p-3 border rounded mb-4 text-lg text-black focus:ring-2 focus:ring-blue-500 focus:outline-none"
+  disabled={!gameStarted || gameOver}
+/>
                   </div>
                   <div>
                     <label htmlFor="phoneNumber" className="block mb-2 text-sm font-medium">Enter your phone number:</label>
