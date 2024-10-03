@@ -54,9 +54,9 @@ const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
 const rules: Rule[] = [
-  { id: 1, text: "The encrypted code 'htij' must be included in the  password, but to decrypt it, you'll need to find the President of Code and request the encryption key from her to unlock the code's true meaning.", points: 5, check: (pwd: string) => pwd.toLowerCase().includes('code') },
-  { id: 2, text: "there's a QR code that has code esi logo somewhere in the school (first stage only) , find it and write the name hidden in the QR code", points: 10, check: (pwd: string) => pwd.toLowerCase().includes('huggingface')  },
-  { id: 3, text: "Find the missing number in this sequence: 7 9 5 11     4 15 12 7       13 8 11 _?. Once you've solved the pattern, include the missing number in your password", points: 10, check: (pwd: string) => pwd.toLowerCase().includes('10') },
+  { id: 1, text: "The encrypted code 'htij' must be included in the  password, but to decrypt it, you'll need to find the President of Code and request the encryption key from her to unlock the code's true meaning.", points: 30, check: (pwd: string) => pwd.toLowerCase().includes('code') },
+  { id: 2, text: "there's a QR code that has code esi logo somewhere in the school (first stage only) , find it and write the name hidden in the QR code", points: 40, check: (pwd: string) => pwd.toLowerCase().includes('huggingface')  },
+  { id: 3, text: "Find the missing number in this sequence: 7 9 5 11 ---- 4 15 12 7 ---- 13 8 11 _?. Once you've solved the pattern, include the missing number in your password", points: 10, check: (pwd: string) => pwd.toLowerCase().includes('10') },
   { id: 4, text: "find the meaning of life in one of the boards members quotes in the badges and write it in computer language", points: 15, check: (pwd: string) => pwd.toLowerCase().includes('101010') },
   { id: 5, text: "what is the last dish we've cooked", points: 20, check: (pwd: string) => pwd.toLowerCase().includes('mdfds') },
   { id: 6, text: "Must contain a month of the year", points: 25, 
@@ -84,7 +84,7 @@ const rules: Rule[] = [
       return specials ? new Set(specials).size >= 2 : false; // Changed to return false if specials is null
     }
   },
-  { id: 10, text: "Must contain a color (red, blue, green, etc)", points: 45,
+  { id: 10, text: "Must contain a color", points: 10,
     check: (pwd: string) => {
       const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'black', 'white'];
       return colors.some(color => pwd.toLowerCase().includes(color));
@@ -94,8 +94,16 @@ const rules: Rule[] = [
     check: (pwd: string) => {
       const cleaned = pwd.toLowerCase().replace(/[^a-z0-9]/g, '');
       return cleaned === cleaned.split('').reverse().join('');
+    }},
+    
+    { id: 13, text: "When was ESI founded?", points: 30, check: (pwd: string) => pwd.toLowerCase().includes('1975') },
+    {
+      id: 14, 
+      text: `def guess(late) -> teacher: \n  if late: \n    return -1`, 
+      points: 80, 
+      check: (pwd: string) => pwd.toLowerCase().includes('assabane')
     }
-  },
+
 ];
 
 
