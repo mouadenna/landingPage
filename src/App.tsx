@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
-import { About } from "./components/About";
-import { OurCells } from "./components/Features";
-import { Footer } from "./components/Footer";
-import { Hero } from "./components/Hero";
-import { OurVision } from "./components/OurVision";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { ClubFeatures } from "./components/ClubFeatures";
-import { ExecutiveBoard } from "./components/Team";
-import { EventGallery } from "./components/Testimonials";
-import { ContactUs } from "./components/ContactUs";
-import { SchoolInfo } from "./components/SchoolInfo";
-import { ScrollAnimation } from "./components/ScrollAnimation";
-import { Analytics } from "@vercel/analytics/react"
+import PasswordGame from "./components/PasswordGame";
 import "./App.css";
+import MainPage from "./mainpage";
 
 function App() {
   useEffect(() => {
@@ -21,40 +14,21 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
       <Navbar />
       <div className="md:hidden">
-        <div className="mb-40"></div>
+        <div className="mb-20"></div>
       </div>
-      <Hero />
-      <ScrollAnimation>
-        <About />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <OurVision />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <SchoolInfo />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <OurCells />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <ClubFeatures />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <EventGallery />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <ExecutiveBoard />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <ContactUs />
-      </ScrollAnimation>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/password-game" element={<PasswordGame />} />
+        {/* Add more routes as needed */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <Footer />
       <ScrollToTop />
       <Analytics />
-    </>
+    </Router>
   );
 }
 
