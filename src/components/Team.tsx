@@ -47,7 +47,7 @@ const teamList: TeamProps[] = [
   },
   {
     imageUrl: omar,
-    name: "Omar Selouani",
+    name: "Omar Salouani",
     position: "Vice President",
     description: "Supporting the president and overseeing club operations.",
     socialNetworks: [
