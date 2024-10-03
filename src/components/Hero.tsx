@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 export const Hero = () => {
   const handleRedirect = () => {
     // Using relative path instead of full URL
-    window.location.href = "/password-game";
+    window.location.href = "---------------";
   };
 
   return (
