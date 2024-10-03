@@ -43,13 +43,13 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_DURATION = 10800; // 3 hours in seconds
-const MAX_TRIES = 3;
+const GAME_DURATION = 1800; // 3 hours in seconds
+const MAX_TRIES = 100;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 // New constants for game scheduling in Moroccan time
 const MOROCCAN_TIME_OFFSET = 1; // Morocco is UTC+1
-const GAME_START_TIME = new Date('2024-10-03T10:00:00').getTime() + (MOROCCAN_TIME_OFFSET * 60 * 60 * 1000);
+const GAME_START_TIME = new Date('2024-10-03T13:00:00').getTime() + (MOROCCAN_TIME_OFFSET * 60 * 60 * 1000);
 const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
@@ -285,7 +285,7 @@ export default function PasswordGame() {
               <CardTitle className="text-2xl">Password Challenge</CardTitle>
               {playerData && (
                 <div className="text-sm text-gray-500">
-                  Playing as: {playerData.name} | Tries left: {playerData.triesLeft}
+                  Playing as: {playerData.name}
                 </div>
               )}
             </CardHeader>
@@ -354,7 +354,7 @@ export default function PasswordGame() {
                   </div>
                 </div>
                 <div className="text-xl font-bold">Score: {score}</div>
-                {(!playerData || playerData.triesLeft > 0) && isGameActive() && (
+                {isGameActive() && (
                   <button 
                     onClick={gameStarted ? handleSubmit : handleStart}
                     className="px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
@@ -379,14 +379,13 @@ export default function PasswordGame() {
                   <AlertTitle>Attempt Complete!</AlertTitle>
                   <AlertDescription>
                     Score: {score} out of {MAX_POSSIBLE_SCORE} possible points
-                    {playerData && <div>Tries remaining: {playerData.triesLeft}</div>}
                     {playerData && playerData.triesLeft > 0 && (
                       <button 
                         onClick={() => {
                           setGameOver(false);
                           setPassword('');
                         }}
-                        className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                        className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors ml-4"
                       >
                         Try Again
                       </button>
