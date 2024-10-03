@@ -1,10 +1,7 @@
 import { Button } from "./ui/button";
 
 export const Hero = () => {
-  const handleRedirect = () => {
-    // Using relative path instead of full URL
-    window.location.href = "/password-game";
-  };
+
 
   return (
     <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10 relative -mt-12 pt-24">
@@ -28,17 +25,6 @@ export const Hero = () => {
           Join our community of data enthusiasts and developers. Learn, build,
           and innovate with cutting-edge technologies in data engineering and software development.
         </p>
-        <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <div className="flex justify-center lg:justify-start mt-4">
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
-              onClick={handleRedirect}
-            >
-              Join The
-            </Button>
-          </div>
-        </div>
       </div>
       <div className="shadow"></div>
       {/* Styles including new fade effect */}
