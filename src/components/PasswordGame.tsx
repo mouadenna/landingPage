@@ -43,13 +43,13 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_DURATION = 3000; // 3 hours in seconds
+const GAME_DURATION = 10800; // 3 hours in seconds
 const MAX_TRIES = 100;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 // New constants for game scheduling in Moroccan time
 const MOROCCAN_TIME_OFFSET = 1; // Morocco is UTC+1
-const GAME_START_TIME = new Date('2024-10-03T13:00:00').getTime() + (MOROCCAN_TIME_OFFSET * 60 * 60 * 1000);
+const GAME_START_TIME = new Date('2024-10-03T10:00:00').getTime() + (MOROCCAN_TIME_OFFSET * 60 * 60 * 1000);
 const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
