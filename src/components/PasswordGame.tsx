@@ -43,12 +43,13 @@ type PlayerData = {
 };
 
 // Constants
-const GAME_DURATION = 10800; // 1 hour in seconds
+const GAME_DURATION = 10800; // 3 hours in seconds
 const MAX_TRIES = 3;
 const TRIES_RESET_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-// New constants for game scheduling
-const GAME_START_TIME = new Date('2024-10-03T10:00:00').getTime(); // Set your desired start time
+// New constants for game scheduling in Moroccan time
+const MOROCCAN_TIME_OFFSET = 1; // Morocco is UTC+1
+const GAME_START_TIME = new Date('2024-10-03T10:00:00').getTime() + (MOROCCAN_TIME_OFFSET * 60 * 60 * 1000);
 const GAME_END_TIME = GAME_START_TIME + (GAME_DURATION * 1000);
 
 
@@ -117,7 +118,6 @@ function DifficultyIndicator({ difficulty }: { difficulty: number }) {
 }
 
 
-// Utility functions
 const formatTime = (milliseconds: number) => {
   const seconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(seconds / 3600);
@@ -126,8 +126,14 @@ const formatTime = (milliseconds: number) => {
   return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 };
 
+const getMoroccanTime = () => {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  return new Date(utc + (3600000 * MOROCCAN_TIME_OFFSET));
+};
+
 const getTimeLeft = () => {
-  const now = Date.now();
+  const now = getMoroccanTime().getTime();
   if (now < GAME_START_TIME) {
     return GAME_START_TIME - now;
   } else if (now < GAME_END_TIME) {
@@ -138,7 +144,7 @@ const getTimeLeft = () => {
 };
 
 const isGameActive = () => {
-  const now = Date.now();
+  const now = getMoroccanTime().getTime();
   return now >= GAME_START_TIME && now < GAME_END_TIME;
 };
 // Main Component
@@ -210,9 +216,9 @@ export default function PasswordGame() {
   // Handle game start
   const handleStart = async () => {
     if (!isGameActive()) {
-      const now = Date.now();
+      const now = getMoroccanTime().getTime();
       if (now < GAME_START_TIME) {
-        alert(`The game hasn't started yet. It will begin at ${new Date(GAME_START_TIME).toLocaleString()}`);
+        alert(`The game hasn't started yet. It will begin at ${new Date(GAME_START_TIME).toLocaleString('en-US', { timeZone: 'Africa/Casablanca' })} Moroccan time`);
       } else {
         alert("The game has ended. Please wait for the next round.");
       }
