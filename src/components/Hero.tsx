@@ -2,7 +2,8 @@ import { Button } from "./ui/button";
 
 export const Hero = () => {
   const handleRedirect = () => {
-    window.location.href = "https://code-esi.vercel.app/password-game";
+    // Using relative path instead of full URL
+    window.location.href = "/password-game";
   };
 
   return (
@@ -34,7 +35,7 @@ export const Hero = () => {
               className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
               onClick={handleRedirect}
             >
-              Join The Game
+              Join The
             </Button>
           </div>
         </div>
