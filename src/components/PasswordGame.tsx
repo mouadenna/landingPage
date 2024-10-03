@@ -100,12 +100,10 @@ const MAX_POSSIBLE_SCORE = rules.reduce((sum, rule) => sum + rule.points, 0);
 // Helper Components
 function DifficultyIndicator({ difficulty }: { difficulty: number }) {
   let color = 'bg-green-500';
-  let text = 'Your message here'; // Use 'text' to display a message
-  
-  if (difficulty > 0.3) {
-    // ... existing code ...
-    text = 'Difficulty is high'; // Update 'text' based on condition
-    // ... existing code ...
+  if (difficulty > 0.7) {
+    color = 'bg-red-500';
+  } else if (difficulty > 0.3) {
+    color = 'bg-yellow-500';
   }
   
   return (
