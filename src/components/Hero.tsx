@@ -21,8 +21,7 @@ export const Hero = () => {
           </h2>
         </main>
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Join our community of data enthusiasts and developers. Learn, build,
-          and innovate with cutting-edge technologies in data engineering and software development.
+          Join our vibrant community of tech lovers, where data enthusiasts, cybersecurity aficionados,competitive programmers, and AI innovators come together.
         </p>
       </div>
       <div className="shadow"></div>
