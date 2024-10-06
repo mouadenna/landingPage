@@ -9,11 +9,11 @@ export const Hero = () => {
         <main className="text-5xl md:text-6xl font-bold">
           <h1 className="inline neon-text">
             <span className="inline bg-gradient-to-r from-[#4facfe] to-[#00f2fe] text-transparent bg-clip-text animate-balanced-neon-blue">
-              CODE
+              CODE Club
             </span>{" "}
-            Club Where 
+              
           </h1>{" "}
-          for{" "}
+          Where{" "}
           <h2 className="inline neon-text">
             <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text animate-balanced-neon-cyan">
               Tech Enthusiasts Thrive!
