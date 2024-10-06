@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { About } from "./components/About";
 import { OurCells } from "./components/Features";
-import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import { OurVision } from "./components/OurVision";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -49,7 +48,6 @@ function MainPage() {
         <ScrollAnimation>
           <ContactUs />
         </ScrollAnimation>
-        <Footer />
         <ScrollToTop />
         <Analytics />
   
