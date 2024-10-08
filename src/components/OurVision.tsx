@@ -1,5 +1,6 @@
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cpu, BrainIcon, Users, GraduationCapIcon } from "lucide-react";
+import { Cpu, Users, Brain, GraduationCap } from "lucide-react";
 
 interface FeatureProps {
   icon: JSX.Element;
@@ -15,26 +16,26 @@ const features: FeatureProps[] = [
       "Gain expertise in cybersecurity, data science, AI, and competitive programming, mastering cutting-edge tools and techniques across these domains.",
   },
   {
-    icon: <CodeIcon className="text-primary w-10 h-10" />,
+    icon: <Users className="text-primary w-10 h-10" />,
     title: "Collaborative Network",
     description:
-      "Join a community of diverse tech enthusiasts to share knowledge, collaborate on projects, and grow together across multiple disciplines.",
+      "Join a community of diverse tech enthusiasts to share knowledge, collaborate on projects, and grow together in various computer science disciplines.",
   },
   {
-    icon: <Users className="text-primary w-10 h-10" />,
+    icon: <Brain className="text-primary w-10 h-10" />,
     title: "Innovation",
     description:
       "Explore emerging technologies and methodologies in cybersecurity, data & AI, and software development to stay at the forefront of the tech industry.",
   },
   {
-    icon: <GraduationCapIcon className="text-primary w-10 h-10" />,
+    icon: <GraduationCap className="text-primary w-10 h-10" />,
     title: "Professional Growth",
     description:
       "Develop essential skills for a successful career in technology through specialized workshops, competitions, and industry projects spanning various computer science fields.",
   },
 ];
 
-export const OurVision = () => {
+const OurVision: React.FC = () => {
   return (
     <section
       id="ourVision"
