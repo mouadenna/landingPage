@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { About } from "./components/About";
 import { OurCells } from "./components/Features";
 import { Hero } from "./components/Hero";
-import { OurVision } from "./components/OurVision";
+import OurVision from "./components/OurVision"
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ClubFeatures } from "./components/ClubFeatures";
 import { ExecutiveBoard } from "./components/Team";
