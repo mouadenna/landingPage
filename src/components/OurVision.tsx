@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShieldIcon, BrainIcon, CodeIcon, GraduationCapIcon } from "lucide-react";
+import { Cpu, BrainIcon, Users, GraduationCapIcon } from "lucide-react";
 
 interface FeatureProps {
   icon: JSX.Element;
@@ -9,7 +9,7 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    icon: <ShieldIcon className="text-primary w-10 h-10" />,
+    icon: <Cpu className="text-primary w-10 h-10" />,
     title: "Tech Mastery",
     description:
       "Gain expertise in cybersecurity, data science, AI, and competitive programming, mastering cutting-edge tools and techniques across these domains.",
@@ -21,7 +21,7 @@ const features: FeatureProps[] = [
       "Join a community of diverse tech enthusiasts to share knowledge, collaborate on projects, and grow together across multiple disciplines.",
   },
   {
-    icon: <BrainIcon className="text-primary w-10 h-10" />,
+    icon: <Users className="text-primary w-10 h-10" />,
     title: "Innovation",
     description:
       "Explore emerging technologies and methodologies in cybersecurity, data & AI, and software development to stay at the forefront of the tech industry.",
