@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DatabaseIcon, UsersIcon, RocketIcon, TrophyIcon } from "lucide-react";
+import { ShieldIcon, BrainIcon, CodeIcon, GraduationCapIcon } from "lucide-react";
 
 interface FeatureProps {
   icon: JSX.Element;
@@ -9,28 +9,28 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    icon: <DatabaseIcon className="text-primary w-10 h-10" />,
-    title: "Data Mastery",
+    icon: <ShieldIcon className="text-primary w-10 h-10" />,
+    title: "Tech Mastery",
     description:
-      "Gain expertise in handling complex datasets and mastering cutting-edge data engineering tools and techniques.",
+      "Gain expertise in cybersecurity, data science, AI, and competitive programming, mastering cutting-edge tools and techniques across these domains.",
   },
   {
-    icon: <UsersIcon className="text-primary w-10 h-10" />,
+    icon: <CodeIcon className="text-primary w-10 h-10" />,
     title: "Collaborative Network",
     description:
-      "Join a community of like-minded data enthusiasts to share knowledge, collaborate on projects, and grow together.",
+      "Join a community of diverse tech enthusiasts to share knowledge, collaborate on projects, and grow together across multiple disciplines.",
   },
   {
-    icon: <RocketIcon className="text-primary w-10 h-10" />,
+    icon: <BrainIcon className="text-primary w-10 h-10" />,
     title: "Innovation",
     description:
-      "Explore emerging technologies and methodologies in data engineering to stay at the forefront of the field.",
+      "Explore emerging technologies and methodologies in cybersecurity, data & AI, and software development to stay at the forefront of the tech industry.",
   },
   {
-    icon: <TrophyIcon className="text-primary w-10 h-10" />,
+    icon: <GraduationCapIcon className="text-primary w-10 h-10" />,
     title: "Professional Growth",
     description:
-      "Develop essential skills for a successful career in data engineering through workshops, competitions, and industry projects.",
+      "Develop essential skills for a successful career in technology through specialized workshops, competitions, and industry projects spanning various computer science fields.",
   },
 ];
 
@@ -47,9 +47,8 @@ export const OurVision = () => {
         </span>
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Empowering ESI students to excel in the world of data engineering through collaboration, innovation, and hands-on experience.
+        Empowering ESI students to excel in key areas of computer science through collaboration, innovation, and hands-on experience.
       </p>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map(({ icon, title, description }: FeatureProps) => (
           <Card
