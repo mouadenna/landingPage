@@ -254,7 +254,7 @@ export const JoinUs = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="preferredCell">Preferred Cell</Label>
+                  <Label htmlFor="preferredCell">Desired Cell</Label>
                   <Select
                     onValueChange={(value) => handleChange("preferredCell", value)}
                     value={formData.preferredCell}
