@@ -46,7 +46,6 @@ interface Submission {
 
 const DASHBOARD_PASSWORD = process.env.REACT_APP_DASHBOARD_PASSWORD;
 
-const DASHBOARD_PASSWORD = "sorryjustkidding";
 
 const cellInfo = {
   cybersecurity: {
