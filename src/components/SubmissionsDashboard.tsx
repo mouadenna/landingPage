@@ -44,7 +44,7 @@ interface Submission {
   reviewed: boolean;
 }
 
-const DASHBOARD_PASSWORD = process.env.REACT_APP_DASHBOARD_PASSWORD;
+const DASHBOARD_PASSWORD = import.meta.env.VITE_DASHBOARD_PASSWORD;
 
 
 const cellInfo = {
