@@ -264,13 +264,20 @@ export const SubmissionsDashboard = () => {
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle>Applications Overview</CardTitle>
-              <div className="flex space-x-2">
-                {Object.entries(submissions).map(([cell, cellSubmissions]) => (
-                  <Badge key={cell} variant="secondary">
-                    {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
-                  </Badge>
-                ))}
-              </div>
+  <div className="flex space-x-2">
+    {Object.entries(submissions).map(([cell, cellSubmissions]) => (
+      <Badge key={cell} variant="secondary">
+        {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
+      </Badge>
+    ))}
+  </div>
+  
+  {/* Total submissions */}
+  <div className="mt-4">
+    <Badge variant="primary">
+      Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
+    </Badge>
+  </div>
             </div>
           </CardHeader>
         </Card>
