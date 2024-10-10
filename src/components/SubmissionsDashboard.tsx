@@ -271,13 +271,14 @@ export const SubmissionsDashboard = () => {
           </Badge>
         ))}
       </div>
-    </div>
+
     {/* Display total submissions */}
     <div className="mt-4 flex justify-end">
       <Badge variant="secondary">
         Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
       </Badge>
     </div>
+   </div>
   </CardHeader>
 </Card>
 
