@@ -44,7 +44,7 @@ interface Submission {
   reviewed: boolean;
 }
 
-const DASHBOARD_PASSWORD = "claudewillreplaceyou";
+const DASHBOARD_PASSWORD = "sorryjustkidding";
 
 const cellInfo = {
   cybersecurity: {
