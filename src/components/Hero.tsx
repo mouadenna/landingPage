@@ -1,5 +1,9 @@
 
 export const Hero = () => {
+    const handleRedirect = () => {
+    // Using relative path instead of full URL
+    window.location.href = "---------------";
+  };
 
 
   return (
@@ -23,6 +27,17 @@ export const Hero = () => {
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
           Join our vibrant community of tech lovers, where data enthusiasts, cybersecurity aficionados,competitive programmers, and AI innovators come together.
         </p>
+                <div className="space-y-4 md:space-y-0 md:space-x-4">
+          <div className="flex justify-center lg:justify-start mt-4">
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
+              onClick={handleRedirect}
+            >
+              Join us
+            </Button>
+          </div>
+        </div>
       </div>
       <div className="shadow"></div>
       {/* Styles including new fade effect */}
