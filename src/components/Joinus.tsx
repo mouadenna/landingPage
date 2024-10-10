@@ -260,7 +260,7 @@ export const JoinUs = () => {
                     value={formData.preferredCell}
                   >
                     <SelectTrigger id="preferredCell">
-                      <SelectValue placeholder="Select Your Preferred Cell" />
+                      <SelectValue placeholder="Select Your desired cell" />
                     </SelectTrigger>
                     <SelectContent>
                       {cells.map((cell) => (
