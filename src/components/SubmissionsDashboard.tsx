@@ -260,27 +260,27 @@ export const SubmissionsDashboard = () => {
       </h2>
 
       <div className="grid gap-8">
-        <Card>
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle>Applications Overview</CardTitle>
-  <div className="flex space-x-2">
-    {Object.entries(submissions).map(([cell, cellSubmissions]) => (
-      <Badge key={cell} variant="secondary">
-        {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
+<Card>
+  <CardHeader>
+    <div className="flex justify-between items-center">
+      <CardTitle>Applications Overview</CardTitle>
+      <div className="flex space-x-2">
+        {Object.entries(submissions).map(([cell, cellSubmissions]) => (
+          <Badge key={cell} variant="secondary">
+            {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
+          </Badge>
+        ))}
+      </div>
+    </div>
+    {/* Display total submissions */}
+    <div className="mt-4 flex justify-end">
+      <Badge variant="primary">
+        Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
       </Badge>
-    ))}
-  </div>
-  
-  {/* Total submissions */}
-  <div className="mt-4">
-    <Badge variant="primary">
-      Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
-    </Badge>
-  </div>
-            </div>
-          </CardHeader>
-        </Card>
+    </div>
+  </CardHeader>
+</Card>
+
 
         <Tabs defaultValue="cybersecurity">
           <TabsList className="grid grid-cols-3 mb-8">
