@@ -124,6 +124,12 @@ export const SubmissionsDashboard = () => {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!DASHBOARD_PASSWORD) {
+      setError("Environment variable not set.");
+      return;
+    }
+    
     if (password === DASHBOARD_PASSWORD) {
       setIsAuthenticated(true);
       setError("");
