@@ -44,6 +44,9 @@ export const JoinUs = () => {
     { value: "ISSIC", label: "ISSIC" },
     { value: "ISITD", label: "ISITD" },
     { value: "IIN", label: "IIN" },
+    { value: "ms_imoic", label: "MS IMOIC" },
+    { value: "ms_ics", label: "MS ICS" },
+    { value: "ms_mi", label: "MS MI" },
   ];
 
   const years = [
