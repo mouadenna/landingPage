@@ -14,6 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
+import Cookies from 'js-cookie';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -45,7 +46,6 @@ interface Submission {
 }
 
 const DASHBOARD_PASSWORD = import.meta.env.VITE_DASHBOARD_PASSWORD;
-
 
 const cellInfo = {
   cybersecurity: {
@@ -85,6 +85,13 @@ export const SubmissionsDashboard = () => {
     dataAI: "new",
     competitiveProgramming: "new",
   });
+
+  useEffect(() => {
+    const authCookie = Cookies.get('isAuthenticated');
+    if (authCookie === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -133,9 +140,15 @@ export const SubmissionsDashboard = () => {
     if (password === DASHBOARD_PASSWORD) {
       setIsAuthenticated(true);
       setError("");
+      Cookies.set('isAuthenticated', 'true', { expires: 1 }); // Cookie expires in 1 day
     } else {
       setError("Incorrect password. Please try again.");
     }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    Cookies.remove('isAuthenticated');
   };
 
   const handleReviewedChange = async (submissionId: string, cell: string, isReviewed: boolean) => {
@@ -162,7 +175,7 @@ export const SubmissionsDashboard = () => {
     <Accordion type="multiple" className="w-full">
       {filteredSubmissions(cellSubmissions, cell).map((submission) => (
         <AccordionItem key={submission.id} value={submission.id}>
-                    <AccordionTrigger>
+          <AccordionTrigger>
             <div className="grid grid-cols-5 w-full items-center">
               <div className="flex items-center space-x-2">
                 <div className="flex items-center space-x-2 min-w-[200px]">
@@ -255,31 +268,31 @@ export const SubmissionsDashboard = () => {
 
   return (
     <div className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-        Submissions Dashboard
-      </h2>
+      <div className="flex justify-between items-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          Submissions Dashboard
+        </h2>
+        <Button onClick={handleLogout}>Logout</Button>
+      </div>
 
       <div className="grid gap-8">
-<Card>
-  <CardHeader>
-    <div className="flex justify-between items-center">
-      <CardTitle>Applications Overview</CardTitle>
-      <div className="flex space-x-2">
-        {Object.entries(submissions).map(([cell, cellSubmissions]) => (
-          <Badge key={cell} variant="secondary">
-            {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
-          </Badge>
-        ))}
-
-      <Badge variant="secondary">
-        Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
-      </Badge>
-    </div>
-   </div>
-  </CardHeader>
-</Card>
-
-
+        <Card>
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Applications Overview</CardTitle>
+              <div className="flex space-x-2">
+                {Object.entries(submissions).map(([cell, cellSubmissions]) => (
+                  <Badge key={cell} variant="secondary">
+                    {cellInfo[cell as keyof typeof cellInfo].title}: {cellSubmissions.length}
+                  </Badge>
+                ))}
+                <Badge variant="secondary">
+                  Total: {Object.values(submissions).reduce((total, cellSubmissions) => total + cellSubmissions.length, 0)}
+                </Badge>
+              </div>
+            </div>
+          </CardHeader>
+        </Card>
 
         <Tabs defaultValue="cybersecurity">
           <TabsList className="grid grid-cols-3 mb-8">
