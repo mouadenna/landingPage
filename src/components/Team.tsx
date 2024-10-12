@@ -1,3 +1,4 @@
+import React, { useState, useRef, useEffect } from 'react';
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -7,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Instagram, Linkedin } from "lucide-react";
 import mouad from '@/assets/board/mouad.png';
 import salim from '@/assets/board/salim.jpg';
@@ -154,8 +156,34 @@ const teamList: TeamProps[] = [
     ],
   },
 ];
-
 export const ExecutiveBoard = () => {
+  const [visibleCards, setVisibleCards] = useState<{ [key: string]: boolean }>({});
+  const cardRefs = useRef<{ [key: string]: React.RefObject<HTMLDivElement> }>({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardId = entry.target.id;
+            setVisibleCards(prev => ({ ...prev, [cardId]: true }));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    teamList.forEach((_, index) => {
+      const cardId = `card-${index}`;
+      if (cardRefs.current[cardId] && cardRefs.current[cardId].current) {
+        observer.observe(cardRefs.current[cardId].current!);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const socialIcon = (iconName: string) => {
     switch (iconName) {
       case "Linkedin":
@@ -165,6 +193,58 @@ export const ExecutiveBoard = () => {
       default:
         return null;
     }
+  };
+
+  const renderCard = ({ imageUrl, name, position, description, socialNetworks }: TeamProps, index: number) => {
+    const cardId = `card-${index}`;
+    cardRefs.current[cardId] = cardRefs.current[cardId] || React.createRef();
+
+    return (
+      <Card
+        key={cardId}
+        id={cardId}
+        ref={cardRefs.current[cardId]}
+        className={`bg-muted/50 relative mt-8 flex flex-col justify-center items-center transition-all duration-1000 ease-out ${
+          visibleCards[cardId] ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
+        }`}
+        style={{ transitionDelay: `${index * 70}ms` }}
+      >
+        <CardHeader className="mt-8 flex justify-center items-center pb-2">
+          <img
+            src={imageUrl}
+            alt={`${name} ${position}`}
+            className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
+          />
+          <CardTitle className="text-center">{name}</CardTitle>
+          <CardDescription className="text-primary">
+            {position}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="text-center pb-2">
+          <p>{description}</p>
+        </CardContent>
+
+        <CardFooter>
+          {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
+            <div key={name}>
+              <a
+                rel="noreferrer noopener"
+                href={url}
+                target="_blank"
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "sm",
+                })}
+              >
+                <span className="sr-only">{name} icon</span>
+                {socialIcon(name)}
+              </a>
+            </div>
+          ))}
+        </CardFooter>
+      </Card>
+    );
   };
 
   return (
@@ -180,139 +260,9 @@ export const ExecutiveBoard = () => {
         Meet the dedicated team leading CODE Club at ESI, driving innovation and excellence in technology.
       </p>
 
-      {/* Pyramid structure: President (1) */}
-      <div className="grid grid-cols-1 gap-8 justify-items-center mb-10">
-        {teamList.slice(0, 1).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
-          <Card
-            key={name}
-            className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
-          >
-            <CardHeader className="mt-8 flex justify-center items-center pb-2">
-              <img
-                src={imageUrl}
-                alt={`${name} ${position}`}
-                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-              />
-              <CardTitle className="text-center">{name}</CardTitle>
-              <CardDescription className="text-primary">
-                {position}
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="text-center pb-2">
-              <p>{description}</p>
-            </CardContent>
-
-            <CardFooter>
-              {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
-                <div key={name}>
-                  <a
-                    rel="noreferrer noopener"
-                    href={url}
-                    target="_blank"
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                  >
-                    <span className="sr-only">{name} icon</span>
-                    {socialIcon(name)}
-                  </a>
-                </div>
-              ))}
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-
-      {/* Vice President and General Secretary (2) */}
-      <div className="grid grid-cols-2 gap-8 justify-items-center mb-10">
-        {teamList.slice(1, 3).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
-          <Card
-            key={name}
-            className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
-          >
-            <CardHeader className="mt-8 flex justify-center items-center pb-2">
-              <img
-                src={imageUrl}
-                alt={`${name} ${position}`}
-                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-              />
-              <CardTitle className="text-center">{name}</CardTitle>
-              <CardDescription className="text-primary">
-                {position}
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="text-center pb-2">
-              <p>{description}</p>
-            </CardContent>
-
-            <CardFooter>
-              {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
-                <div key={name}>
-                  <a
-                    rel="noreferrer noopener"
-                    href={url}
-                    target="_blank"
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                  >
-                    <span className="sr-only">{name} icon</span>
-                    {socialIcon(name)}
-                  </a>
-                </div>
-              ))}
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-
-      {/* Remaining team (3 in each row) */}
-      <div className="grid md:grid-cols-3 gap-8 justify-items-center">
-        {teamList.slice(3).map(({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
-          <Card
-            key={name}
-            className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
-          >
-            <CardHeader className="mt-8 flex justify-center items-center pb-2">
-              <img
-                src={imageUrl}
-                alt={`${name} ${position}`}
-                className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
-              />
-              <CardTitle className="text-center">{name}</CardTitle>
-              <CardDescription className="text-primary">
-                {position}
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="text-center pb-2">
-              <p>{description}</p>
-            </CardContent>
-
-            <CardFooter>
-              {socialNetworks.map(({ name, url }: SocialNetworksProps) => (
-                <div key={name}>
-                  <a
-                    rel="noreferrer noopener"
-                    href={url}
-                    target="_blank"
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                  >
-                    <span className="sr-only">{name} icon</span>
-                    {socialIcon(name)}
-                  </a>
-                </div>
-              ))}
-            </CardFooter>
-          </Card>
-        ))}
+      {/* Responsive grid for all team members */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        {teamList.map((member, index) => renderCard(member, index))}
       </div>
     </section>
   );

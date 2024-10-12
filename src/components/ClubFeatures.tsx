@@ -1,6 +1,7 @@
+import  { useState, useRef, useEffect } from 'react';
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2Icon, UsersIcon, TrophyIcon, BriefcaseIcon } from "lucide-react"; // Add new icon
-import iconSrc from '@/assets/icon.png'; 
+import { Code2Icon, UsersIcon, TrophyIcon, BriefcaseIcon } from "lucide-react";
+import iconSrc from '@/assets/icon.png';
 
 interface FeatureProps {
   title: string;
@@ -31,13 +32,39 @@ const featureList: FeatureProps[] = [
     title: "Seminars & Mentoring",
     description:
       "Learn from seminars led by industry experts and receive mentorship from leading professionals in the tech field.",
-    icon: <BriefcaseIcon className="w-6 h-6 text-primary" />, // New icon for this feature
+    icon: <BriefcaseIcon className="w-6 h-6 text-primary" />,
   },
 ];
 
 export const ClubFeatures = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the component is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="container py-24 sm:py-32">
+    <section ref={sectionRef} className="container py-24 sm:py-32">
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-3xl md:text-4xl font-bold text-center">
           Empowering{" "}
@@ -53,8 +80,16 @@ export const ClubFeatures = () => {
       <div className="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
         <div>
           <div className="flex flex-col gap-8">
-            {featureList.map(({ icon, title, description }: FeatureProps) => (
-              <Card key={title}>
+            {featureList.map(({ icon, title, description }: FeatureProps, index) => (
+              <Card 
+                key={title} 
+                className={`transform transition-all duration-1000 ease-out ${
+                  isVisible 
+                    ? 'translate-x-0 opacity-100' 
+                    : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
                   <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
                     {icon}
@@ -70,11 +105,15 @@ export const ClubFeatures = () => {
             ))}
           </div>
         </div>
-
         <img
           src={iconSrc}
-          className="w-[200px] md:w-[300px] lg:w-[400px] object-contain"
+          className={`w-[200px] md:w-[300px] lg:w-[400px] object-contain transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100' 
+              : 'opacity-0'
+          }`}
           alt="CODE Club Activities"
+          ref={(el) => (imageRef.current = el)}
         />
       </div>
     </section>

@@ -1,12 +1,43 @@
+import  { useRef, useEffect, useState } from 'react';
 import logo from "../assets/logo.svg";
 
 export const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="about"
       className="container py-24 sm:py-32"
+      ref={sectionRef}
     >
-      <div className="bg-muted/50 border rounded-lg py-12">
+      <div 
+        className={`bg-muted/50 border rounded-lg py-12 transition-all duration-1000 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
+        }`}
+      >
         <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
           <img
             src={logo}
@@ -24,13 +55,13 @@ export const About = () => {
               </h2>
             
               <p className="text-xl text-muted-foreground mt-4">
-              Club Of Data Engineers, fondly known as CODE, is the go-to IT club at the School of Information Sciences (ESI) in Rabat.
+                Club Of Data Engineers, fondly known as CODE, is the go-to IT club at the School of Information Sciences (ESI) in Rabat.
                 More than just a student club, CODE is all about building a vibrant, collaborative community where students can share ideas, 
                 learn from one another, and grow both personally and professionally. 
-                              </p>
+              </p>
               <p className="text-xl text-muted-foreground mt-4">
-              Our mission is to create an atmosphere that encourages creativity and connection—whether it’s through exciting events, hands-on workshops,
-                or networking with industry professionals. At CODE, we’re shaping the future, one project at a time!
+                Our mission is to create an atmosphere that encourages creativity and connection—whether it's through exciting events, hands-on workshops,
+                or networking with industry professionals. At CODE, we're shaping the future, one project at a time!
               </p>
             </div>
           </div>

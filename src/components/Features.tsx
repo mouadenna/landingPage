@@ -1,3 +1,4 @@
+import  { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShieldIcon, BrainIcon, CodeIcon } from "lucide-react";
 
@@ -29,6 +30,36 @@ const cells: CellProps[] = [
 ];
 
 export const OurCells = () => {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(cells.length).fill(false));
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardRefs.current.findIndex((ref) => ref === entry.target);
+            if (index !== -1) {
+              setVisibleCards((prev) => {
+                const newState = [...prev];
+                newState[index] = true;
+                return newState;
+              });
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="ourCells"
@@ -45,19 +76,32 @@ export const OurCells = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {cells.map(({ icon, title, description }: CellProps) => (
-          <Card
+        {cells.map(({ icon, title, description }: CellProps, index) => (
+          <div
             key={title}
-            className="bg-muted/50"
+            ref={(el) => (cardRefs.current[index] = el)}
+            className={`transition-all duration-500 ease-out ${
+              visibleCards[index]
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-16'
+            }`}
+            style={{ transitionDelay: `${index * 150}ms`, height: '100%' }}
           >
-            <CardHeader>
-              <CardTitle className="grid gap-4 place-items-center">
-                {icon}
-                {title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>{description}</CardContent>
-          </Card>
+            <Card
+              className="bg-muted/50 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg hover:-translate-y-1"
+              style={{ height: '100%' }}
+            >
+              <CardHeader>
+                <CardTitle className="grid gap-4 place-items-center">
+                  <div className="transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:rotate-3">
+                    {icon}
+                  </div>
+                  {title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>{description}</CardContent>
+            </Card>
+          </div>
         ))}
       </div>
     </section>

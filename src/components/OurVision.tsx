@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Cpu, Users, Brain, GraduationCap } from "lucide-react";
 
@@ -36,8 +36,58 @@ const features: FeatureProps[] = [
 ];
 
 const OurVision: React.FC = () => {
+  const [sectionVisible, setSectionVisible] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(features.length).fill(false));
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const sectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true);
+          sectionObserver.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      sectionObserver.observe(sectionRef.current);
+    }
+
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardRefs.current.findIndex((ref) => ref === entry.target);
+            if (index !== -1) {
+              setVisibleCards((prev) => {
+                const newState = [...prev];
+                newState[index] = true;
+                return newState;
+              });
+              cardObserver.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) cardObserver.observe(ref);
+    });
+
+    return () => {
+      sectionObserver.disconnect();
+      cardObserver.disconnect();
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="ourVision"
       className="container text-center py-24 sm:py-32"
     >
@@ -50,11 +100,21 @@ const OurVision: React.FC = () => {
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
         Empowering ESI students to excel in key areas of computer science through collaboration, innovation, and hands-on experience.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {features.map(({ icon, title, description }: FeatureProps) => (
+      <div 
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 ease-in-out ${
+          sectionVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
+        }`}
+      >
+        {features.map(({ icon, title, description }: FeatureProps, index) => (
           <Card
             key={title}
-            className="bg-muted/50"
+            ref={(el) => (cardRefs.current[index] = el)}
+            className={`bg-muted/50 transition-all duration-1000 ease-in-out ${
+              visibleCards[index]
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+            style={{ transitionDelay: `${index * 200}ms` }}
           >
             <CardHeader>
               <CardTitle className="grid gap-4 place-items-center">
