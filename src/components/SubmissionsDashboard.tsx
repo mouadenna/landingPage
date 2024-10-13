@@ -18,14 +18,14 @@ import Cookies from 'js-cookie';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQCAsgIwi8m_soYbnBN5XVUcs1qNT_5Io",
-  authDomain: "passwordgame1.firebaseapp.com",
-  databaseURL: "https://passwordgame1-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "passwordgame1",
-  storageBucket: "passwordgame1.appspot.com",
-  messagingSenderId: "813385507628",
-  appId: "1:813385507628:web:03c3f9187e95f4401c0289",
-  measurementId: "G-LY3QF8X1FN"
+  apiKey:  import.meta.env.VITE_apiKey,
+  authDomain:  import.meta.env.VITE_authDomain,
+  databaseURL: import.meta.env.VITE_databaseURL,
+  projectId:  import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId:  import.meta.env.VITE_appId,
+  measurementId:  import.meta.env.VITE_measurementId
 };
 
 // Initialize Firebase
