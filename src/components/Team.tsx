@@ -156,6 +156,7 @@ const teamList: TeamProps[] = [
     ],
   },
 ];
+
 export const ExecutiveBoard = () => {
   const [visibleCards, setVisibleCards] = useState<{ [key: string]: boolean }>({});
   const cardRefs = useRef<{ [key: string]: React.RefObject<HTMLDivElement> }>({});
@@ -260,9 +261,19 @@ export const ExecutiveBoard = () => {
         Meet the dedicated team leading CODE Club at ESI, driving innovation and excellence in technology.
       </p>
 
-      {/* Responsive grid for all team members */}
+      {/* Pyramid structure: President (1) */}
+      <div className="grid grid-cols-1 gap-8 justify-items-center mb-10">
+        {teamList.slice(0, 1).map((member, index) => renderCard(member, index))}
+      </div>
+
+      {/* Vice President and General Secretary (2) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center mb-10">
+        {teamList.slice(1, 3).map((member, index) => renderCard(member, index + 1))}
+      </div>
+
+      {/* Remaining team (3 in each row) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-        {teamList.map((member, index) => renderCard(member, index))}
+        {teamList.slice(3).map((member, index) => renderCard(member, index + 3))}
       </div>
     </section>
   );

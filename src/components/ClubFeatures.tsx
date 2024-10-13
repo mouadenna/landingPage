@@ -1,4 +1,4 @@
-import  { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2Icon, UsersIcon, TrophyIcon, BriefcaseIcon } from "lucide-react";
 import iconSrc from '@/assets/icon.png';
@@ -39,7 +39,6 @@ const featureList: FeatureProps[] = [
 export const ClubFeatures = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,11 +108,10 @@ export const ClubFeatures = () => {
           src={iconSrc}
           className={`w-[200px] md:w-[300px] lg:w-[400px] object-contain transition-all duration-1000 ease-out ${
             isVisible 
-              ? 'opacity-100' 
-              : 'opacity-0'
+              ? 'translate-x-0 opacity-100' 
+              : 'translate-x-[100%] opacity-0'
           }`}
           alt="CODE Club Activities"
-          ref={(el) => (imageRef.current = el)}
         />
       </div>
     </section>
