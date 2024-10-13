@@ -4,8 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
-import PasswordGame from "./components/PasswordGame";
-import {JoinUs} from './components/Joinus';
 import "./App.css";
 import MainPage from "./mainpage";
 import {SubmissionsDashboard} from "./components/SubmissionsDashboard";
@@ -23,10 +21,11 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/Submissions-Dashboard" element={<SubmissionsDashboard />} />
+        {/* 
         <Route path="/password-game" element={<PasswordGame />} />
         <Route path="/join-us" element={<JoinUs />} />
-        <Route path="/Submissions-Dashboard" element={<SubmissionsDashboard />} />
-        {/* Add more routes as needed */}
+        */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
