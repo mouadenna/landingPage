@@ -7,6 +7,9 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import "./App.css";
 import MainPage from "./mainpage";
 import {SubmissionsDashboard} from "./components/SubmissionsDashboard";
+import QuizInterface from "./components/quizizz-interface";
+import QuizInterfaceAdmin from "./components/quizizz-interface-admin";
+
 
 function App() {
   useEffect(() => {
@@ -22,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/Submissions-Dashboard" element={<SubmissionsDashboard />} />
+        <Route path="/QuizInterface" element={<QuizInterface/>}/>
+        <Route path="/QuizInterfaceAdmin" element={<QuizInterfaceAdmin/>}/>
         {/* 
         <Route path="/password-game" element={<PasswordGame />} />
         <Route path="/join-us" element={<JoinUs />} />
