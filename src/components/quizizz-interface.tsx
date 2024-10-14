@@ -148,7 +148,16 @@ const QuizInterface = () => {
           <CardTitle>Real-time Multiple Choice Quiz</CardTitle>
         </CardHeader>
         <CardContent>
- 
+          <div className="mb-4">
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="admin-mode"
+                checked={isAdmin}
+                onCheckedChange={handleAdminToggle}
+              />
+              <Label htmlFor="admin-mode">Admin Mode</Label>
+            </div>
+          </div>
           
           {isAdmin && <AdminPanel />}
 
