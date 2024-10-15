@@ -344,7 +344,7 @@ const QuizInterfaceAdmin: React.FC = () => {
     <div className="p-4 max-w-4xl mx-auto  min-h-screen text-white">
       <Card className="mb-4 bg-gray-900 text-white border-blue-500">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-blue-300">Real-time Multiple Choice Quiz</CardTitle>
+          <CardTitle className="text-3xl font-bold text-blue-300">ICE BREAKER</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
