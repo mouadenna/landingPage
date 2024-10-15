@@ -35,7 +35,7 @@ export const Hero = () => {
               className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
               onClick={handleRedirect}
             >
-              Join us
+              Join ICE BREAKER
             </Button>
           </div>
         </div>
