@@ -6,16 +6,15 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue,  get, update } from 'firebase/database';
 import Cookies from 'js-cookie';
 
-// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQCAsgIwi8m_soYbnBN5XVUcs1qNT_5Io",
-  authDomain: "passwordgame1.firebaseapp.com",
-  databaseURL: "https://passwordgame1-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "passwordgame1",
-  storageBucket: "passwordgame1.appspot.com",
-  messagingSenderId: "813385507628",
-  appId: "1:813385507628:web:03c3f9187e95f4401c0289",
-  measurementId: "G-LY3QF8X1FN"
+  apiKey:  import.meta.env.VITE_apiKey,
+  authDomain:  import.meta.env.VITE_authDomain,
+  databaseURL: import.meta.env.VITE_databaseURL,
+  projectId:  import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId:  import.meta.env.VITE_appId,
+  measurementId: import.meta.env.VITE_measurementId,
 };
 
 // Initialize Firebase
@@ -34,22 +33,121 @@ interface Question {
   choices: string[];
   correctAnswer: string;
 }
-
-const questions: Question[] = [
+const questions = [
   {
-    question: "What is the capital of France?",
-    choices: ["London", "Berlin", "Paris", "Madrid"],
-    correctAnswer: "Paris"
+      question: "The word 'racecar' is spelled the same forwards and backwards.",
+      choices: ["FALSE", "TRUE"],
+      correctAnswer: "TRUE"
   },
   {
-    question: "What is 2 + 2?",
-    choices: ["3", "4", "5", "6"],
-    correctAnswer: "4"
+      question: "37, 34, 31, 28 - Which number should come next in the pattern?",
+      choices: ["27", "23", "24", "25"],
+      correctAnswer: "25"
   },
   {
-    question: "Who painted the Mona Lisa?",
-    choices: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
-    correctAnswer: "Leonardo da Vinci"
+      question: "What will be the output of this string manipulation?\n\ns = \"abcdefg\"\n\nprint(s[::-2])",
+      choices: ["gda", "Error", "gfedcba", "fdcba"],
+      correctAnswer: "gda"
+  },
+  {
+      question: "What number best completes the analogy:\n8:4 as 10:",
+      choices: ["7", "3", "24", "5"],
+      correctAnswer: "5"
+  },
+  {
+      question: "1,3,5,7,8,9,11 - which one doesn't belong to this series?",
+      choices: ["8", "3", "5", "1"],
+      correctAnswer: "8"
+  },
+  {
+      question: "If all Bloops are Razzies and all Razzies are Lazzies, then all Bloops are definitely Lazzies?",
+      choices: ["False", "I Don't know", "True"],
+      correctAnswer: "True"
+  },
+  {
+      question: "2,4,8,16,32,64 .. What is next?",
+      choices: ["90", "100", "132", "128"],
+      correctAnswer: "128"
+  },
+  {
+      question: "Hakimi, who is sixteen years old, is four times as old as his sister. How old will Hakimi be when he is twice as old as his sister?",
+      choices: ["24", "25", "I don't know", "20"],
+      correctAnswer: "24"
+  },
+  {
+      question: "What is 1/2 of 1/4 of 1/5 of 200?",
+      choices: ["5", "10", "50", "25"],
+      correctAnswer: "5"
+  },
+  {
+      question: "If all bloopers are hoopers and all hoopers are loopers, are all bloopers definitely loopers?",
+      choices: ["True", "False"],
+      correctAnswer: "True"
+  },
+  {
+      question: "If you are in a race and you pass the person in second place, what place are you in?",
+      choices: ["2nd", "1st", "3rd", "4th"],
+      correctAnswer: "2nd"
+  },
+  {
+      question: "What was the tallest mountain before Mt. Everest was discovered?",
+      choices: ["Mt. Fuji", "Mt. Everest", "Gurla Mandhata", "Kilimanjaro"],
+      correctAnswer: "Mt. Everest"
+  },
+  {
+      question: "What does 'talincta' rearranged spell?",
+      choices: ["a city", "a theme park", "an ocean", "a country"],
+      correctAnswer: "an ocean"
+  },
+  {
+      question: "Which one is least like the four?",
+      choices: ["human", "cat", "snake", "dog"],
+      correctAnswer: "snake"
+  },
+  {
+      question: "564738273472834481936237225455 backwards is",
+      choices: [
+          "554522732639148438274372837465",
+          "7746562635435436545362153673537",
+          "5546765454443256865654324632567",
+          "5546765454443256865654323232 567"
+      ],
+      correctAnswer: "554522732639148438274372837465"
+  },
+  {
+      question: "Which of the following is used to insert a comment in Python?",
+      choices: ["#", "/* */", "//", "<!-- -->"],
+      correctAnswer: "#"
+  },
+  {
+      question: "What is the output of the following code?\n\nfor i in range(3):\n    for j in range(i):\n        print(i, j)",
+      choices: ["102021", "Error", "112022", "001122"],
+      correctAnswer: "102021"
+  },
+  {
+      question: "What syntax can you use to insert a line break between strings so that they appear over multiple lines?",
+      choices: ["/n", "*", "/b", "/"],
+      correctAnswer: "/n"
+  },
+  {
+      question: "Is Python an interpreter or compiler programming language?",
+      choices: ["interpreter", "compiler"],
+      correctAnswer: "interpreter"
+  },
+  {
+      question: "What does 'HTTP' stand for?",
+      choices: ["HyperText Transfer Protocol", "HighText Transfer Protocol", "HyperText Transmission Protocol", "HyperTransfer Text Protocol"],
+      correctAnswer: "HyperText Transfer Protocol"
+  },
+  {
+      question: "Which data type is used to store true/false values in Python?",
+      choices: ["int", "bool", "str", "list"],
+      correctAnswer: "bool"
+  },
+  {
+      question: "What is the time complexity of binary search in a sorted array?",
+      choices: ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+      correctAnswer: "O(log n)"
   }
 ];
 
