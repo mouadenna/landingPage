@@ -1,10 +1,7 @@
 import { Button } from "./ui/button";
 
 export const Hero = () => {
-    const handleRedirect = () => {
-    // Using relative path instead of full URL
-    window.location.href = "https://quizizz.com/join?gc=920134";
-  };
+
 
 
   return (
@@ -28,17 +25,7 @@ export const Hero = () => {
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
           Join our vibrant community of tech lovers, where data enthusiasts, cybersecurity aficionados,competitive programmers, and AI innovators come together.
         </p>
-                <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <div className="flex justify-center lg:justify-start mt-4">
-            <Button 
-              size="lg"
-              className="ice-button"
-              onClick={handleRedirect}
-            >
-              BREAK THE ICE!
-            </Button>
-          </div>
-        </div>
+
       </div>
       <div className="shadow"></div>
       {/* Styles including new fade effect */}
