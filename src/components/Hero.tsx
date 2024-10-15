@@ -32,10 +32,10 @@ export const Hero = () => {
           <div className="flex justify-center lg:justify-start mt-4">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
+              className="ice-button"
               onClick={handleRedirect}
             >
-              Join ICE BREAKER
+              BREAK THE ICE!
             </Button>
           </div>
         </div>
@@ -49,7 +49,7 @@ export const Hero = () => {
               0 0 5px rgba(79, 172, 254, 0.8),
               0 0 10px rgba(79, 172, 254, 0.6),
               0 0 15px rgba(79, 172, 254, 0.4),
-              0 0 20px rgba(79, 172, 254, 0.2);
+              0 0 20px rgba(255, 255, 255, 0.2);
           }
           50% {
             text-shadow:
@@ -92,6 +92,38 @@ export const Hero = () => {
           mask-size: 100% 100%;
           mask-repeat: no-repeat;
         }
+                .ice-button {
+          background: linear-gradient(45deg, #a0e1ff, #e5f6ff);
+          border: none;
+          padding: 12px 24px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #4facfe;
+          border-radius: 30px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(160, 225, 255, 0.4);
+          position: relative;
+          overflow: hidden;
+        }
+        .ice-button::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent, rgba(255,255,255,0.8), transparent);
+          transform: rotate(45deg);
+          transition: all 0.3s ease;
+        }
+        .ice-button:hover::before {
+          left: 100%;
+          top: 100%;
+        }
+        .ice-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(160, 225, 255, 0.6);
       `}</style>
     </section>
   );
