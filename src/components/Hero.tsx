@@ -81,49 +81,7 @@ export const Hero = () => {
         .animate-balanced-neon-cyan {
           animation: balanced-neon-cyan 2s ease-in-out infinite alternate;
         }
-        .video-fade-mask {
-          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-          mask-size: 100% 100%;
-          mask-repeat: no-repeat;
-          mask-position: center;
-        }
-        .video-fade-mask2 {
-          mask-image: linear-gradient(to buttom, transparent, black 10%, black 90%, transparent);
-          mask-size: 100% 100%;
-          mask-repeat: no-repeat;
-        }
-                .ice-button {
-          background: linear-gradient(45deg, #a0e1ff, #e5f6ff);
-          border: none;
-          padding: 12px 24px;
-          font-size: 18px;
-          font-weight: bold;
-          color: #4facfe;
-          border-radius: 30px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 5px 15px rgba(160, 225, 255, 0.4);
-          position: relative;
-          overflow: hidden;
-        }
-        .ice-button::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(45deg, transparent, rgba(255,255,255,0.8), transparent);
-          transform: rotate(45deg);
-          transition: all 0.3s ease;
-        }
-        .ice-button:hover::before {
-          left: 100%;
-          top: 100%;
-        }
-        .ice-button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(160, 225, 255, 0.6);
+
       `}</style>
     </section>
   );
