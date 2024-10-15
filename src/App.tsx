@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/Submissions-Dashboard" element={<SubmissionsDashboard />} />
+        
         <Route path="/QuizInterface" element={<QuizInterface/>}/>
         <Route path="/QuizInterfaceAdmin" element={<QuizInterfaceAdmin/>}/>
         {/* 
