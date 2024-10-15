@@ -1,5 +1,10 @@
+import { Button } from "./ui/button";
 
 export const Hero = () => {
+    const handleRedirect = () => {
+    // Using relative path instead of full URL
+    window.location.href = "/";
+  };
 
 
   return (
@@ -25,8 +30,13 @@ export const Hero = () => {
         </p>
                 <div className="space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex justify-center lg:justify-start mt-4">
-              
-
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-[#4facfe] to-[#00f2fe] hover:opacity-90 transition-opacity"
+              onClick={handleRedirect}
+            >
+              Join us
+            </Button>
           </div>
         </div>
       </div>
